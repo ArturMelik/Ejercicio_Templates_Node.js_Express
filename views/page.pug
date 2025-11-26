@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  h1= heading
+  p= content
+
+  if page === 'home'
+    img(src="/assets/mitos-de-programadores.png", alt="logo", width="500")
+
+  if page === "about"
+      img(src="/assets/images.jpeg", alt="Quiénes somos", width="500")
+
+
+
+  else if page === 'mission'
+    h2 Nuestros servicios
+    ul
+      each service in services
+        li= service
+
+  else if page === 'location'
+    h2 Mapa
+    iframe(
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194626.64658688806!2d-3.8675613635368284!3d40.341428648812276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229dd28bc4f6b%3A0x1b818ff2f527183b!2sThe%20Bridge%20%7C%20Digital%20Talent%20Accelerator!5e0!3m2!1ses!2ses!4v1762901533055!5m2!1ses!2ses",
+    width="600",
+    height="450",
+    style="border:0;",
+    allowfullscreen,
+    loading="lazy"
+      )
+    
+
+  else if page === 'contact'
+    form(action="/contact" method="post")
+      div
+        label(for="name") Nombre:
+        br
+        input(type="text" id="name" name="name" placeholder="Tu nombre" required)
+      div
+        label(for="email") Email:
+        br
+        input(type="email" id="email" name="email" placeholder="Tu email" required)
+      div
+        label(for="message") Mensaje:
+        br
+        textarea(id="message" name="message" placeholder="Tu mensaje" required)
+      button(type="submit") Enviar
